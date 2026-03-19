@@ -8,7 +8,9 @@ public class leetCode503 {
         int[] arr ={1,2,3,4,3};
 
         String s  = Arrays.toString(nextGreaterElements(arr));
-        System.out.println(s);
+        System.out.println(s
+            
+        );
     }
 
     public static int[] nextGreaterElements(int[] arr) {
