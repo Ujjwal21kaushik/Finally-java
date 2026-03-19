@@ -27,7 +27,7 @@ public class pchp {
       st.push(i);
     }
     
-
+ 
     return Arrays.toString(ans);
   }
 
