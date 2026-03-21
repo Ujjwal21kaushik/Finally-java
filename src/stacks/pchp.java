@@ -6,8 +6,8 @@ import java.util.*;
 public class pchp {
   public static void main(String[] args) {
     int[] arr = {5, 2, 4, 3};
-    System.out.println(NGEonRight(arr));
-    System.out.println(NGEonLeft(arr));
+    // System.out.println(NGEonRight(arr));
+    // System.out.println(NGEonLeft(arr));
     System.out.println(NSEonRight(arr));
     System.out.println(NSEonLeft(arr));
 
