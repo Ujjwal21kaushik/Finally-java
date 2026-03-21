@@ -5,10 +5,10 @@ import java.util.*;
 
 public class pchp {
   public static void main(String[] args) {
-    int[] arr = {5, 2, 4, 3};
+    int[] arr = {5, 3,5,4,1};
     // System.out.println(NGEonRight(arr));
     // System.out.println(NGEonLeft(arr));
-    System.out.println(NSEonRight(arr));
+    // System.out.println(NSEonRight(arr));
     System.out.println(NSEonLeft(arr));
 
     
@@ -49,11 +49,11 @@ public class pchp {
   static String NSEonRight(int[]arr){
     Stack<Integer> st = new Stack<>();
     int[] ans = new int[arr.length];
-    Arrays.fill(ans, -1);
-    for(int i=0; i<arr.length ; i++){
-
+    int n =arr.length; 
+    ans[n-1] = n;
+    for(int i=0; i<n ; i++){
       while(!st.isEmpty() && arr[i]<arr[st.peek()]){
-        ans[st.peek()] = arr[i];
+        ans[st.peek()] = i;
         st.pop();
       }
       st.push(i);
@@ -64,11 +64,12 @@ public class pchp {
   static String NSEonLeft(int[]arr){
     Stack<Integer> st = new Stack<>();
     int[] ans = new int[arr.length];
+     int n =arr.length;
     Arrays.fill(ans, -1);
-    for(int i=arr.length-1; i>=0 ; i--){
+    for(int i=n-1; i>=0 ; i--){
 
       while(!st.isEmpty() && arr[i]<arr[st.peek()]){
-        ans[st.peek()] = arr[i];
+        ans[st.peek()] = i;
         st.pop();
       }
       st.push(i);
