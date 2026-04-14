@@ -11,7 +11,7 @@ public class hard1320 {
         };
         String s = "CAKE";
         for(char ch : s.toCharArray()){
-            
+            int inn = Integer.MAX_VALUE;
         }
     }
 }
