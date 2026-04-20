@@ -10,6 +10,7 @@ class MyStackQueue {
     public MyStackQueue() {
         st = new Stack<>();
         helper = new Stack<>();
+        
     }
     
     // public void push(int x) {
