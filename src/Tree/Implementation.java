@@ -1,4 +1,7 @@
-package Tree;
+// package Tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Node{
     int val;
@@ -8,9 +11,17 @@ class Node{
         this.val = val;
     }
 }
+class Pair{
+    Node node;
+    int level;
+    
+    Pair(Node node ,int level){
+        this.node = node ;
+        this.level = level;
+    }
+}
 
 public class Implementation {
-
     public static void main(String[] args) {
         Node a = new Node(3);
         Node b = new Node(4);
@@ -29,10 +40,65 @@ public class Implementation {
         // System.out.println(sum(a));
         // System.out.println(level(a));
         // System.out.println(max(a));
-        display(a);
-        System.out.println();
-        invert(a);
-        display(a);
+        // display(a);
+        // System.out.println();
+        // invert(a);
+        // display(a);
+
+        // bfs(a);
+        // bfslevelorder(a);
+
+    //    kthlevel(a,0,1);
+
+        // for (int i = 0; i < level(a); i++) {
+        //     kthlevel(a, 0, i);
+        //     System.out.println();
+        // }
+
+
+    }
+
+    private static void kthlevel(Node root, int level, int k) {
+        if(root == null) return ;
+
+        if(level == k) System.out.print(root.val+" ");
+        kthlevel(root.left, level+1, k);
+        kthlevel(root.right, level+1, k);
+    }
+
+    private static void bfslevelorder(Node root) {
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(root, 0));
+        int curr =0;
+        while(!q.isEmpty()){ 
+            Pair front = q.remove();
+            Node node = front.node;
+            int level = front.level;
+
+            if(level != curr){
+                curr++;
+                System.out.println();
+            }
+            System.out.print(front.node.val+ " ");
+
+            if(node.left != null) q.add(new Pair(node.left, level+1)); 
+            if(node.right != null) q.add(new Pair(  node.right, level+1));
+        }
+
+    }
+
+    private static void bfs(Node root) {
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+
+        while(!q.isEmpty()){
+            Node front = q.remove();
+            System.out.print(front.val+ " ");
+
+            if(front.left != null) q.add(front.left); 
+            if(front.right != null) q.add(front.right);
+        }
 
     }
 
@@ -40,7 +106,7 @@ public class Implementation {
         if(root == null) return;
         Node temp = root.left;
         root.left = root.right;
-        root.right = temp;
+        root.right = temp;  
         invert(root.left);        
         invert(root.right);        
     }
@@ -71,7 +137,7 @@ public class Implementation {
 
     }
 
-    public static void display(Node root) {
+    private static void display(Node root) {
         if(root == null) return;
 
         System.out.print(root.val + " ");

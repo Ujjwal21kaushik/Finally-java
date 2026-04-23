@@ -1,46 +1,46 @@
-package Tree;
+// package Tree;
 
-public class findMax {
+// public class findMax {
     
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+//     static class TreeNode {
+//         int val;
+//         TreeNode left;
+//         TreeNode right;
         
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
+//         TreeNode(int val) {
+//             this.val = val;
+//         }
+//     }
     
-    TreeNode root;
+//     TreeNode root;
     
 
-    public findMax(TreeNode root) {
-        this.root = root;
-    }
+//     public findMax(TreeNode root) {
+//         this.root = root;
+//     }
 
-    public int maxTree(){
-        return maxTree(root);
-    }
+//     public int maxTree(){
+//         return maxTree(root);
+//     }
 
-    private int maxTree(TreeNode root) {
-        if(root == null) return Integer.MIN_VALUE;
+//     private int maxTree(TreeNode root) {
+//         if(root == null) return Integer.MIN_VALUE;
 
-        int lmax = maxTree(root.left);
-        int rmax = maxTree(root.right);
+//         int lmax = maxTree(root.left);
+//         int rmax = maxTree(root.right);
 
-        return Math.max(lmax, Math.max(rmax, root.val));
-    }
+//         return Math.max(lmax, Math.max(rmax, root.val));
+//     }
 
-    public boolean find(int val){
-        return find(root, val);   
-    }
+//     public boolean find(int val){
+//         return find(root, val);   
+//     }
     
-    private boolean find(TreeNode root, int val) {
-        if (root == null) return false;
+//     private boolean find(TreeNode root, int val) {
+//         if (root == null) return false;
 
-        if (root.val == val) return true;
+//         if (root.val == val) return true;
         
-        return find(root.left, val) || find(root.right, val);
-    }
-}
+//         return find(root.left, val) || find(root.right, val);
+//     }
+// }
