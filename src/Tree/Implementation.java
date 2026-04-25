@@ -1,6 +1,8 @@
-// package Tree;
+package Tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 class Node{
@@ -38,7 +40,7 @@ public class Implementation {
         // display(a);
         // System.out.println(size(a));
         // System.out.println(sum(a));
-        // System.out.println(level(a));
+        // System.out.println(height(a));
         // System.out.println(max(a));
         // display(a);
         // System.out.println();
@@ -50,12 +52,30 @@ public class Implementation {
 
     //    kthlevel(a,0,1);
 
-        // for (int i = 0; i < level(a); i++) {
+        // for (int i = 0; i < height(a); i++) {
         //     kthlevel(a, 0, i);
         //     System.out.println();
         // }
 
+        // diameter(a);
+        // System.out.println(dim);
 
+
+        // List<List<Integer>> result = new ArrayList<>();
+        // dfsLevelOrder(a , 0 , result);
+        // System.out.println(result);
+
+    }
+    static int dim = Integer.MIN_VALUE;
+    private static int diameter(Node root) {
+        if(root == null) return 0; 
+
+        int left = diameter(root.left);
+        int right = diameter(root.right);
+
+        dim = Math.max(dim , left+right);
+
+        return Math.max(left, right) + 1 ;
     }
 
     private static void kthlevel(Node root, int level, int k) {
@@ -112,10 +132,14 @@ public class Implementation {
     }
 
 
-    private static int level(Node root) {
-       if(root == null) return 0;
+    private static int height(Node root) {
+        // height = number of nodes in path
+       if(root == null) return 0; //we are counting nodes
 
-        return Math.max(level(root.left),level(root.right)) +1;
+
+    //    if(root == null) return -1; //we  are counting edges   // height =number of edges
+
+        return Math.max(height(root.left),height(root.right)) +1;
     }
 
     private static int sum(Node root) {
@@ -151,4 +175,21 @@ public class Implementation {
         int lrmax = Math.max(max(root.left),max(root.right));
         return Math.max(lrmax,  root.val);
     }
+
+    private static void dfsLevelOrder(Node root, int level, List<List<Integer>> result) {
+        if(root == null) return;
+
+        if(result.size() == level){
+            result.add(new ArrayList<>());
+        }
+        result.get(level).add(root.val);
+
+        dfsLevelOrder(root.left, level+1, result);
+        dfsLevelOrder(root.right, level+1, result);
+        
+    }
+
+
+
+
 }
