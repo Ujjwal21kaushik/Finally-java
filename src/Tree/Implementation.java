@@ -1,9 +1,6 @@
 package Tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 class Node{
     int val;
@@ -24,6 +21,11 @@ class Pair{
 }
 
 public class Implementation {
+        //         3
+        //      /     \
+        //     4        2
+        //   /   \    /   \
+        // -1    1   6     9
     public static void main(String[] args) {
         Node a = new Node(3);
         Node b = new Node(4);
@@ -38,7 +40,7 @@ public class Implementation {
         c.left = f; c.right =g;
 
         // display(a);
-        // System.out.println(size(a));
+        System.out.println(size(a));
         // System.out.println(sum(a));
         // System.out.println(height(a));
         // System.out.println(max(a));
@@ -64,6 +66,9 @@ public class Implementation {
         // List<List<Integer>> result = new ArrayList<>();
         // dfsLevelOrder(a , 0 , result);
         // System.out.println(result);
+        ArrayList<Integer> ans = new ArrayList<>();
+        rightView(a , 0 , ans);
+        System.out.println(ans);
 
     }
     static int dim = Integer.MIN_VALUE;
@@ -187,6 +192,18 @@ public class Implementation {
         dfsLevelOrder(root.left, level+1, result);
         dfsLevelOrder(root.right, level+1, result);
         
+    }
+
+    private static void rightView(Node root, int level, ArrayList<Integer> ans) {
+        if(root == null) return ;
+
+        if(level >= ans.size()){
+            ans.add(root.val);
+        }else{
+            ans.set(level,root.val);
+        }
+        rightView(root.left, level+1, ans);
+        rightView(root.right, level+1, ans);
     }
 
 
